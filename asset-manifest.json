@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Survey.ts/static/css/main.ca4dfdac.css",
+    "main.js": "/Survey.ts/static/js/main.80592627.js",
+    "static/media/oops.jpg": "/Survey.ts/static/media/oops.b563ef96332792a488c7.jpg",
+    "static/media/logo.png": "/Survey.ts/static/media/logo.7c88ad23c330cec59fda.png",
+    "index.html": "/Survey.ts/index.html",
+    "main.ca4dfdac.css.map": "/Survey.ts/static/css/main.ca4dfdac.css.map",
+    "main.80592627.js.map": "/Survey.ts/static/js/main.80592627.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca4dfdac.css",
+    "static/js/main.80592627.js"
+  ]
+}
