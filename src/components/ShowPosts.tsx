@@ -111,7 +111,7 @@ const ShowPosts: FC<ShowPostsPropTypes> = ({ typeOfPosts }) => {
         ''
       )}
 
-      {!isPostFound ? <div>You have no post yet!</div> : ''}
+      {!isPostFound ? <div>No more post is Found!</div> : ''}
       {/* {!endOfPosts && <Loader isLoading={isLoading} />} */}
     </Container>
   );
