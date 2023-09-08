@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -29,11 +29,11 @@ function App() {
         />
         <Route
           path="/avatar"
-          element={!isAuth ? <Avatar /> : <Navigate to="/" />} //! incorrectly protected!
+          element={!isAuth ? <Avatar /> : <Navigate to="/" />}
         />
         <Route
           path="/edit-avatar/"
-          element={isAuth ? <Avatar /> : <Navigate to="/" />} //! incorrectly protected!
+          element={isAuth ? <Avatar /> : <Navigate to="/" />}
         />
         <Route
           path="/login"
