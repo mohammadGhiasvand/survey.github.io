@@ -13,6 +13,7 @@ import OverlayModal from '../components/OverlayModal';
 import { isEditingHandler } from '../store/commentSlice';
 import { useAppDispatch } from '../store/store';
 import { isEdited } from '../utils/isEdited';
+import { useNavigate } from 'react-router-dom';
 
 interface PostCommentPropType {
   comment: {
@@ -28,6 +29,7 @@ interface PostCommentPropType {
 
 const PostComment: FC<PostCommentPropType> = ({ comment }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [isYourComment, setIsYourComment] = useState(false);
   const [isDisplaySetting, setIsDisplayShowSetting] = useState(false);
@@ -64,10 +66,12 @@ const PostComment: FC<PostCommentPropType> = ({ comment }) => {
       .then((data) => {
         if (data.status === 201) {
           setIsLiked((prevState) => !prevState);
-          setNumberOfLikes(data.data.likes);
+          return setNumberOfLikes(data.data.likes);
         }
+        navigate('/');
       })
       .catch(({ response }) => {
+        navigate('/login');
         const errStatusArray = [401, 422, 500];
         if (errStatusArray.includes(response.status)) {
         }
@@ -96,7 +100,9 @@ const PostComment: FC<PostCommentPropType> = ({ comment }) => {
       .then((res) => {
         if (res.status === 200) {
           // console.log(res.data);
+          return;
         }
+        navigate('/');
       })
       .catch((err) => {
         console.log(err);
@@ -191,7 +197,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     .comment-text__container {
-      width: 13rem;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
