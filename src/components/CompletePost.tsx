@@ -101,11 +101,9 @@ const CompletePost = () => {
             </div>
             <div className="comments-container">
               {post.comments && post.comments.length > 0 ? (
-                post.comments
-                  .reverse()
-                  .map((comment: any) => (
-                    <PostComment key={comment._id} comment={comment} />
-                  ))
+                post.comments.map((comment: any) => (
+                  <PostComment key={comment._id} comment={comment} />
+                ))
               ) : (
                 <div className="no-comment">No Comments yet!</div>
               )}

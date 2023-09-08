@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { UserSchemaTypes } from '../store/userSlice';
@@ -14,7 +13,6 @@ import OverlayModal from '../components/OverlayModal';
 import { isEditingHandler } from '../store/commentSlice';
 import { useAppDispatch } from '../store/store';
 import { isEdited } from '../utils/isEdited';
-import toastOptions from '../utils/toastOptions';
 
 interface PostCommentPropType {
   comment: {
@@ -65,7 +63,6 @@ const PostComment: FC<PostCommentPropType> = ({ comment }) => {
       )
       .then((data) => {
         if (data.status === 201) {
-          toast.success(data.data.msg, toastOptions);
           setIsLiked((prevState) => !prevState);
           setNumberOfLikes(data.data.likes);
         }
@@ -73,7 +70,6 @@ const PostComment: FC<PostCommentPropType> = ({ comment }) => {
       .catch(({ response }) => {
         const errStatusArray = [401, 422, 500];
         if (errStatusArray.includes(response.status)) {
-          toast.error(response.data.msg, toastOptions);
         }
       });
   };
@@ -99,8 +95,7 @@ const PostComment: FC<PostCommentPropType> = ({ comment }) => {
       .delete(`${BASE_API_URL}/feed/delete-comment/${comment._id}`, config)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
-          toast.success(res.data.msg, toastOptions);
+          // console.log(res.data);
         }
       })
       .catch((err) => {
@@ -170,7 +165,6 @@ const PostComment: FC<PostCommentPropType> = ({ comment }) => {
           </div>
         </div>
       </Container>
-      <ToastContainer />
     </Fragment>
   );
 };
