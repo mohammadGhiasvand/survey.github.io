@@ -34,7 +34,9 @@ const CompletePost = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
-    const socket = openSocket(`${BASE_BACKEND_URL}`);
+    const socket = openSocket(`${BASE_BACKEND_URL}`, {
+      transports: ['websocket'],
+    });
     socket.on('comments', (data: { action: string; post: PostSchemaTypes }) => {
       const dataActions = ['create', 'edit', 'delete', 'likedComment'];
       if (dataActions.includes(data.action)) {
